@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Professional website development services tailored to your business needs. Responsive, SEO-friendly websites with custom features.">
+    <meta name="keywords" content="Website Development, Web Design, SEO, Frontend, Backend, Services">
+
+    <title>Ad Making Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 10px;
+            font-size: 24px;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 15px 0px;
+            box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 10px 20px;
+            text-align: center;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            list-style: none;
+            padding: 10px;
+            top: 100%;
+            left: 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .content {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #F2F6FF;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            text-align: center;
+            text-shadow: 1px 1px 2.5px #333;
+            font-size: 32px;
+        }
+
+        .web {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .requirement img {
+            width: 40%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .requirement p {
+            font-size: 17px;
+            text-align: left;
+            width: 57%;
+        }
+
+        .requirement:nth-child(odd) img {
+            order: -1;
+        }
+
+        .fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .requirement,
+        .packages {
+            opacity: 0;
+            transform: translateY(30px);
+            /* Increased movement for a smoother effect */
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+            /* Slower animation */
+        }
+
+        .fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .packages {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #F2F6FF;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .package-card {
+            display: inline-block;
+            width: 28%;
+            margin: 10px;
+            padding: 15px;
+            background: #F2F6FF;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .package-card h3 {
+            color: #333;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            nav ul.nav-links {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                z-index: 99;
+            }
+
+            nav ul.nav-links.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+
+            .dropdown>a::after {
+                content: " ▼";
+                font-size: 12px;
+            }
+
+            .dropdown>a:focus+.dropdown-menu,
+            .dropdown>a:active+.dropdown-menu {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .package-card {
+                width: 90%;
+                display: block;
+                margin: 15px auto;
+            }
+
+            .requirement {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .requirement img,
+            .requirement p {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">MyLogo</div> <!-- Optional -->
+                <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="company.html">Company</a></li>
+                            <li><a href="team.html">Team</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="website-development.html">Website Development</a></li>
+                            <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                            <li><a href="ad-making.html">Ad Making</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Work</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="work-website-development.html">Website Development</a></li>
+                            <li><a href="work-digital-marketing.html">Digital Marketing</a></li>
+                            <li><a href="work-ad-making.html">Ad Making</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>Professional Ad Making</h1>
+    </header>
+
+    <section class="content">
+        <h2>How We Make Ad </h2>
+        <div class="web">
+            <div class="requirement">
+                <img src="Pre-Production (Planning Phase).jpg" alt="Planning Phase">
+                <p><strong>Pre-Production (Planning Phase) :</strong><br><br><b>1. Understanding the Brand & Audience
+                        :</b> Research the target audience, their pain points, and preferences. <br><br> <b>2. Concept &
+                        Storyboarding :</b> Develop a strong concept and create a visual storyboard. <br><br>
+                    <b>3. Scriptwriting :</b> Craft a compelling script with a clear message and call to action (CTA).
+                    <br><br>
+                    <b>3. Casting & Location Scouting :</b> Choose the right actors, voice-over artists, and locations
+                    for shooting.
+                    <br><br>
+                </p>
+            </div>
+            <div class="requirement">
+                <p><strong>Production (Shooting Phase) :</strong><br><br> <b>Filming Techniques :</b><br><br> <b>1. Rule of
+                        Thirds :</b> Use balanced composition for engaging visuals. <br><br> <b>2. Lighting &
+                        Cinematography :</b> Ensure proper lighting for a professional look. <br><br>
+                    <b>3. Camera Angles & Movements :</b> Use creative angles like close-ups, tracking shots, and drone
+                    footage to make the ad dynamic. <br><br>
+                    <b>4. Green Screen & Special Effects :</b> If needed, use a green screen to add CGI elements.
+                    <br><br>
+                    <b>Audio Elements :</b> Clear dialogues, High-quality voice-overs, Background music that suits
+                    the theme, Sound effects for impact <br><br>
+                </p>
+                <img src="Shooting Phase.jpg" alt="Shooting Phase">
+            </div>
+            <div class="requirement">
+                <img src="Editing & Final Touches.jpeg" alt="Editing & Final Touches">
+                <p><strong>Post-Production (Editing & Final Touches) :</strong><br><br> <b>Editing Techniques :</b><br><br> <b>1. Cut-to-Action :</b> Keep it fast-paced and engaging. <br><br> <b>2. Transitions & Motion Graphics :</b> Smooth transitions and creative animations. <br><br>
+                <b>3. Color Grading :</b> Adjust colors for a cinematic feel. <br><br>
+                <b>4. Text & Typography :</b> Highlight key messages using animated text.
+                <br><br>
+                <b>Final Optimization :</b>  Add logos, social media handles, and website links. <br>
+                Optimize for different platforms (YouTube, Instagram, TV, etc.). <br>
+                A/B test different versions to see which <br><br>
+            </p>
+            </div>
+        </div>
+    </section>
+    <section class="packages">
+        <h2>Choose Your Package</h2>
+        <div class="package-card">
+            <h3>Pro</h3>
+            <p>30-second ad</p>
+            <p>Price: $199</p>
+        </div>
+        <div class="package-card">
+            <h3>Pro Plus</h3>
+            <p>60-second ad</p>
+            <p>Price: $299</p>
+        </div>
+        <div class="package-card">
+            <h3>Prime</h3>
+            <p>90-second ad</p>
+            <p>Price: $499</p>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function checkVisibility() {
+                $('.requirement, .packages').each(function () {
+                    var top_of_element = $(this).offset().top;
+                    var bottom_of_screen = $(window).scrollTop() + $(window).height();
+                    var top_of_screen = $(window).scrollTop();
+
+                    if (bottom_of_screen > top_of_element && top_of_screen < top_of_element + $(this).outerHeight()) {
+                        $(this).addClass('fade-in');
+                    } else {
+                        $(this).removeClass('fade-in'); // Reset animation when scrolling back up
+                    }
+                });
+            }
+
+            $(window).on('scroll', function () {
+                checkVisibility();
+            });
+
+            checkVisibility(); // Ensure animation starts on page load
+
+            $('#menu-toggle').click(function () {
+                $('#nav-links').toggleClass('show');
+            });
+        });
+    </script>
+
+    <footer style="background:#333;color:white;padding:20px;text-align:center;">
+        © 2025 Your Company Name. All rights reserved.
+    </footer>
+
+</body>
+
+</html>
